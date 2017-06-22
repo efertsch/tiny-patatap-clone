@@ -3,7 +3,8 @@
 <head>
 	<title>Patatap Clone</title>
 	<script type="text/javascript" src="paper-full.js"></script>
-	<script type="text/javascript">"https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.4/howler.core.min.js"</script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.4/howler.js"></script>
+	<script type="text/javascript" src="data.js"></script>
 	<link rel="stylesheet" type="text/css" href="circles.css">
 	<script type="text/paperscript" canvas="myCanvas">
 
@@ -14,7 +15,8 @@
 			var randomPoint = Point.random();
 			var point = maxPoint * randomPoint;
 			var newCircle = new Path.Circle(point, 500);
-			newCircle.fillColor = "red";
+			newCircle.fillColor = keyData[event.key].color;
+			keyData[event.key].sound.play();
 			circlesArray.push(newCircle);
 		}
 
@@ -25,8 +27,6 @@
 				circlesArray[i].scale(0.95);
 			}
 		}
-
-
 	</script>
 </head>
 <body>
