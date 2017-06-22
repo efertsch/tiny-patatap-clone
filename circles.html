@@ -25,6 +25,10 @@
 			for(var i = 0; i < circlesArray.length; i++){
 				circlesArray[i].fillColor.hue += 1;
 				circlesArray[i].scale(0.95);
+				if(circlesArray[i].area < 1){
+					circlesArray[i].remove();
+					circlesArray.splice(i, 1);
+				}
 			}
 		}
 	</script>
