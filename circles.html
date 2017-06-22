@@ -3,15 +3,29 @@
 <head>
 	<title>Patatap Clone</title>
 	<script type="text/javascript" src="paper-full.js"></script>
+	<script type="text/javascript">"https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.4/howler.core.min.js"</script>
 	<link rel="stylesheet" type="text/css" href="circles.css">
 	<script type="text/paperscript" canvas="myCanvas">
+
+		var circlesArray = [];
 
 		function onKeyDown(event) {
 			var maxPoint = new Point(view.size.width, view.size.height);
 			var randomPoint = Point.random();
 			var point = maxPoint * randomPoint;
-			new Path.Circle(new Point(point), 10).fillColor = "yellow";
+			var newCircle = new Path.Circle(point, 500);
+			newCircle.fillColor = "red";
+			circlesArray.push(newCircle);
 		}
+
+
+		function onFrame(event){
+			for(var i = 0; i < circlesArray.length; i++){
+				circlesArray[i].fillColor.hue += 1;
+				circlesArray[i].scale(0.95);
+			}
+		}
+
 
 	</script>
 </head>
